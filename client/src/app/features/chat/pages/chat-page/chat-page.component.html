@@ -1,11 +1,12 @@
-<main class="h-screen flex flex-col items-center p-4">
-  <section>
+<main class="min-h-screen flex flex-col items-center relative">
+  <!-- Header: Selects -->
+  <section class="w-full max-w-xl p-4">
     <form [formGroup]="formGroup" class="card flex justify-center gap-x-2">
       <p-select
         formControlName="selectedOriginLanguage"
         [options]="filteredOriginLanguages"
         optionLabel="label"
-        placeholder="Selecciona el lenguaje de origen"
+        placeholder="Lenguaje de origen"
         class="w-full md:w-56"
       ></p-select>
 
@@ -15,16 +16,31 @@
         formControlName="selectedDestinationLanguage"
         [options]="filteredDestinationLanguages"
         optionLabel="label"
-        placeholder="Selecciona el lenguaje de destino"
+        placeholder="Lenguaje de destino"
         class="w-full md:w-56"
       ></p-select>
-
     </form>
   </section>
-  <section class="h-full">
 
+  <!-- Mensajes (altura fija y scrolleable) -->
+  <section class="w-full max-w-xl px-4">
+    <div class="h-96 overflow-y-auto">
+      @for(message of messages; track message.id){
+        @if(message.comesFromUser){
+          <div class="flex justify-start mb-2">
+            <chat-bubble [message]="message" />
+          </div>
+        }@else{
+          <div class="flex justify-end mb-2">
+            <chat-bubble [message]="message" />
+          </div>
+        }
+      }
+    </div>
   </section>
-  <section class="w-xl">
-    <feature-chat-input/>
+
+  <!-- Chat input (posición absoluta abajo) -->
+  <section class="w-full max-w-xl absolute bottom-16 bg-white">
+    <feature-chat-input [placeholder]="'Traduce aqui tu mensaje'" />
   </section>
 </main>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import {Textarea} from 'primeng/textarea';
@@ -15,4 +15,5 @@ import {Textarea} from 'primeng/textarea';
 })
 export class ChatInputComponent {
   value!: string;
+  placeholder = input<string>()
 }

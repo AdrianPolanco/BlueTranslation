@@ -1,0 +1,12 @@
+<article class="flex gap-x-2 mb-2">
+  @if(message().comesFromUser){
+    @if(message().photoUrl){
+      <p-avatar [image]="message().photoUrl" shape="circle" />
+    }@else{
+      <p-avatar icon="pi pi-user" class="mr-2" shape="circle" />
+    }
+  }
+  <div class="bg-gray-100 p-2 text-center rounded">
+    {{message().text}}
+  </div>
+</article>
