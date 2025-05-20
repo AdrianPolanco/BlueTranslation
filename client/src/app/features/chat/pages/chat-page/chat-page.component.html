@@ -1,0 +1,30 @@
+<main class="h-screen flex flex-col items-center p-4">
+  <section>
+    <form [formGroup]="formGroup" class="card flex justify-center gap-x-2">
+      <p-select
+        formControlName="selectedOriginLanguage"
+        [options]="filteredOriginLanguages"
+        optionLabel="label"
+        placeholder="Selecciona el lenguaje de origen"
+        class="w-full md:w-56"
+      ></p-select>
+
+      <p-button icon="pi pi-arrow-right-arrow-left" [rounded]="true" size="small" />
+
+      <p-select
+        formControlName="selectedDestinationLanguage"
+        [options]="filteredDestinationLanguages"
+        optionLabel="label"
+        placeholder="Selecciona el lenguaje de destino"
+        class="w-full md:w-56"
+      ></p-select>
+
+    </form>
+  </section>
+  <section class="h-full">
+
+  </section>
+  <section class="w-xl">
+    <feature-chat-input/>
+  </section>
+</main>
